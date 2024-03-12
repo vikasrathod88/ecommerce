@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce page </title>
+    <link rel="shortcut icon" href="./icons/eco.png" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            width: 100%;
+            height: 50px;
+            background-color: rgb(0, 174, 255);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            z-index: 1;
+        }
+
+        .logo img {
+            margin: 8px 20px;
+            height: 56px;
+            width: 88px;
+            border-radius: 9px;
+        }
+
+        .bar {
+            padding: 15px;
+            color: white;
+
+        }
+        #seachid {
+            width: 500px;
+            padding: 9px 26px;
+            border-radius: 15px;
+        }
+
+        .login {
+            margin-right: 50px;
+        }
+
+        .login a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 10px;
+            border-radius: 10px;
+            background-color: rgb(16, 16, 196);
+
+        }
+        #barr{
+            background-color: rgb(0, 174, 255);
+
+        }
+
+        .login a:hover {
+            color: rgb(0, 0, 0);
+        }
+
+        .nav {
+        
+            background-color: rgba(201, 197, 197, 0.1);
+            padding-top: 60px;
+        }
+
+        .mainnav {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .mainitems {
+            position: relative;
+            padding: 14px 17px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            font-size: 17px;
+            transition: 0.3s;
+
+        }
+
+        .mainitems:hover {
+            background-color: rgb(135, 136, 143);
+            border-radius: 20px;
+            color: rgb(0, 0, 0);
+            transform: scale(1.2);
+
+        }
+
+        /* dropdown */
+        .subnav1 {
+            display: none;
+            background-color: rgba(132, 128, 128, 0.3);
+            position: absolute;
+            left: 0px;
+            top: 100%;
+        }
+
+        .subnav1items {
+            padding: 10px 15px;
+            width: 200px;
+            border: 1px solid white;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .subnav1items:hover {
+            background-color: rgb(65, 60, 60);
+            color: rgb(255, 250, 250);
+        }
+
+        .mainitems:hover .subnav1 {
+            display: block;
+        }
+        .subnav1 a{
+            text-decoration: none;
+            color: black;
+        }
+
+        /* main */
+        .img {
+            height: 200px;
+            width: 200px;
+            transition-duration: 0.3s;
+            margin-bottom: 20px;
+
+        }
+
+        .img:hover {
+            border: 1px solid black;
+            border-radius: 10px;
+            transform: scale(1.1);
+        }
+
+        h1 {
+            margin-left: 70px;
+            margin-top: 20px;
+        }
+
+        .section1,
+        .section2 {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 23px;
+        }
+        .cen {
+            margin-left: 50px;
+            font-weight: bold;
+        }
+
+        /* footer */
+
+        .footer {
+            margin-top: 50px;
+            display: flex;
+            height: 200px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: space-around;
+        }
+
+        h3 {
+            color: rgb(35, 34, 34);
+            margin-top: 16px;
+            font-size: 20px;
+        }
+
+        .ul {
+            margin-top: 10px;
+        }
+
+        .ul li {
+            list-style-type: none;
+            padding: 5px;
+        }
+
+        .ul a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .ul a:hover {
+
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .opp {
+            background-color: rgb(71, 73, 73);
+            position: absolute;
+            top: 0px;
+            left: 100%;
+            display: none;
+
+        }
+
+        .oppo {
+            border: 1px solid white;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        .oppo:hover {
+            background-color: rgb(124, 50, 50);
+            color: white;
+        }
+
+        .subnav1items:hover .opp {
+            display: block;
+        }
+
+        #color {
+            color: rgb(255, 255, 255);
+
+            background-color: rgb(255, 0, 0);
+        }
+
+        #color:hover {
+
+            color: rgb(0, 0, 0); 
+
+        }
+        .price {
+            color: green;
+            font-weight: bolder;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="mainhead">
+        <div class="header">
+            <div class="logo"><img src="./icons/ecccc.png" alt="image"></div>
+
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass itag bar"></i>
+                <input type="search" name="search" id="seachid" placeholder="Search For Products, Brands and More"
+                    autofocus>
+            </div>
+            <div class="login">
+                <i class="fa-regular fa-user bar"></i>
+                <a href="./9jan-signup.html" target="_blank">Login/SignIn</a>
+                <a href="./9janlogout.html" target="_blank" id="color">LogOut</a>
+                <a href="./9jan-table.html" id="barr" target="_blank" title="Customer data"><i class="fa-solid fa-bars bar"></i></a>
+                <!-- <span id="barr"><i class="fa-solid fa-bars bar"id></i></span> -->
+            </div>
+        </div>
+    </header>   
+    <nav class="nav">
+        <div class="mainnav">
+            <div class="mainitems"><i class="fa-solid fa-bicycle"></i>&nbsp;Two Wheelers</div>
+            <div class="mainitems"><i class="fa-solid fa-car"></i>&nbsp;Four Wheelers</div>
+            <div class="mainitems"><i class="fa-solid fa-mobile"></i>&nbsp; Mobiles
+                <div class="subnav1">
+                    <a href="https://www.mi.com/in/" target="_blank"><div class="subnav1items">Redmi</div></a>
+                    <a href="https://www.realme.com/in/" target="_blank"><div class="subnav1items">Realme</div></a>
+                   <a href="https://www.oppo.com/in/events/reno11-series-launch/?gclid=Cj0KCQiAwP6sBhDAARIsAPfK_waCMQJuaCEvqxltXtMnR92-pSNDtJYUz-p7osc6F64v6coCSMac0LIaAiB6EALw_wcB" target="_blank" > <div class="subnav1items">Oppo</a>
+                        <div class="opp">
+                            <div class="oppo">Reno10</div>
+                            <div class="oppo">A59</div>
+                            <div class="oppo">A78 5G</div>
+                            <div class="oppo">F21_Pro</div>
+                        </div>
+                    </div>
+                    <a href="https://www.apple.com/in/iphone/?afid=p238%7CsnTdg5ZpO-dc_mtid_209254ho67063_pcrid_673721870589_pgrid_135363319397_pexid__&cid=wwa-in-kwgo-iphone-slid----General-" target="_blank"><div class="subnav1items">iphone</div></a>
+                    <a href="https://www.samsung.com/in/computers/galaxy-book/galaxy-book3/buy/?modelCode=NP750XFG-KA2IN&cid=in_pd_ppc_google_im-mobile-smartphones-galaxybook3-dtc_sales_samsung-galaxybook3-all-2023_eshop-pmax-pla_01jan2023-na_1ur-503011l-2024-eshop-bau-performancemax-cpc_pfm--19635211653------x--&gad_source=1&gclid=Cj0KCQiAwP6sBhDAARIsAPfK_wYVEEu3A65fBLYJT-lNGSmAG6G55Hi4lwHlb8HMiqRyYV0DSoHktMkaAq0aEALw_wcB" target="_blank"><div class="subnav1items">Samsung</div></a>
+                </div>
+            </div>
+            <div class="mainitems"><i class="fa-solid fa-laptop"></i> &nbsp;Electronics
+                <div class="subnav1">
+                    <div class="subnav1items">Laptop</div>
+                    <div class="subnav1items">Computer</div>
+                    <div class="subnav1items">T.V</div>
+                    <div class="subnav1items">headphone</div>
+                    <div class="subnav1items">Speakers</div>
+                </div>
+            </div>
+            <div class="mainitems"><i class="fa-solid fa-shirt"></i>&nbsp;Fashion
+                <div class="subnav1">
+                    <div class="subnav1items">All</div>
+                    <div class="subnav1items">Men's T-Thirt</div>
+                    <div class="subnav1items">Men's casual shirts</div>
+                    <div class="subnav1items">Men's formal shirts</div>
+                    <div class="subnav1items">Men's kurtas</div>
+                </div>
+            </div>
+            <div class="mainitems"><i class="fa-solid fa-heart"></i>&nbsp;Beauty,Toys&more
+                <div class="subnav1">
+                    <div class="subnav1items">teddy</div>
+                    <div class="subnav1items">Bicycle</div>
+                    <div class="subnav1items">motor</div>
+                    <div class="subnav1items">camera</div>
+                    <div class="subnav1items">T-Thirt</div>
+                </div>
+            </div>
+            <div class="mainitems"><i class="fa-solid fa-location-dot"></i>&nbsp;Travel
+                <div class="subnav1" id="">
+                    <div class="subnav1items">Bhavana</div>
+                    <div class="subnav1items">Panchshil</div>
+                    <div class="subnav1items">primo</div>
+                    <div class="subnav1items">bhagyashree</div>
+                    <div class="subnav1items">Jalna</div>
+                    <div class="subnav1items">pune</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h1 class="h1">Best Of Electronics</h1>
+        <hr>
+        <div class="section1">
+            <div class="sec">
+                <a href="#"><img src="./electronics/monitor.png" alt="" class="img"></a><br>
+                <span class="cen">Monitor <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">4,000</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./electronics/headphone1.jpg" alt="" class="img"></a><br>
+                <span class="cen">Bluethooth headphone <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i> <span class="price">2,000</span></span>
+            </div>
+            <div class="sec">
+                <a href="./9jan-buy.html" target="_blank" ><img src="./electronics/airpods.jpg" alt="" class="img"></a><br>
+                <span class="cen">Airpods <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">19,990</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./electronics/speakers.webp" alt="" class="img"></a><br>
+                <span class="cen">Speakers <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">5,000</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./electronics/printer.jpg" alt="" class="img"></a><br>
+                <span class="cen">Printers <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">39,990</span></span>
+            </div>
+        </div>
+        <h1>Beauty Toys & More</h1>
+        <hr>
+        <div class="section2">
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/-original-imagrzvjjvvxvwa2.webp" alt="" class="img"></a><br>
+                <span class="cen">Bicycle <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">2,000</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/teddy6.webp" alt="" class="img"></a><br>
+                <span class="cen">Teddy <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">499</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/teddy3.webp" alt="" class="img"></a><br>
+                <span class="cen">Teddy <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">549</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/teddy4.webp" alt="" class="img"></a><br>
+                <span class="cen">Teddy
+                    <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">389</span></span>
+            </div>
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/teddy5.webp" alt="" class="img"></a><br>
+                <span class="cen">Teddy <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">500</span></span>
+            </div>
+        </div>
+        <h1>Home & Kitchen Essentials</h1>
+        <hr>
+        <!-- section 3 -->
+        <div class="section2">
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/homekitchen/Bulbs.webp" alt="" class="img"></a><br>
+                <span class="cen">Bulb <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">299</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/homekitchen/Clock (2).webp" alt="" class="img"></a><br>
+                <span class="cen">Clock <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">1,599</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img
+                        src="./beauty toys/homekitchen/double-face-vase-combo-8-10-wauood-original-imafpfhzhhxdeexf.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">face-vase-combo <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">499</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/homekitchen/Emergency Lights.webp" alt="" class="img"></a><br>
+                <span class="cen">Emergency Lights
+                    <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">199</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/homekitchen/Festive gift.webp" alt="" class="img"></a><br>
+                <span class="cen">festive gift <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">899</span></span>
+            </div>
+
+        </div>
+        <!-- section 4 -->
+        <h1>Sports, HealthCare & More</h1>
+        <hr>
+        <div class="section2">
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/sports/-original-imagbwf3wvhzfh5z.webp" alt="" class="img"></a><br>
+                <span class="cen">Cofee powder <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">149</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img
+                        src="./beauty toys/sports/adjustable-spring-hand-exerciser-finger-exerciser-hand-grip-original-imagg8phpmjazvgj.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">Hand Grip/Fitness Grip<br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">149</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img
+                        src="./beauty toys/sports/anadi-01-yoga-mat-4-30-anadi-enterprise-15-original-imagfsxudxcm7r48.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">yoga-mat <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">119</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img
+                        src="./beauty toys/sports/ft098-steel-motorized-ft98-steel-motorized-motorized-fitkit-original-imafuerskytashcz.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">steel-motorized
+                    <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">249</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/sports/push-up-bar-0-8-long-ankaro-original-imafu9dmvdk3rzvy.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">Dumbbell <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">399</span></span>
+            </div>
+
+        </div>
+        <!-- section 5 -->
+        <h1>Shoes</h1>
+        <hr>
+        <div class="section2">
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/shoes/-original-imagtajgzy2pgcfe.webp" alt="" class="img"></a><br>
+                <span class="cen">Cofee powder <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">2,000</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/shoes/8-388892-8-puma-white-quarry-original-imagahqhtkzxjewd.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">Hand Grip/Fitness Grip<br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">3,500</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/shoes/7-ori-9050-7-bersache-grey-original-imagn8qkhgnpbgzb.webp"
+                        alt="" class="img"></a><br>
+                <span class="cen">yoga-mat <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">4,599</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img src="./beauty toys/shoes/-original-imagtbtcmpbgsrpt.webp" alt="" class="img"></a><br>
+                <span class="cen">steel-motorized
+                    <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">6,500</span></span>
+            </div>
+
+            <div class="sec">
+                <a href="#"><img
+                        src="./beauty toys/shoes/8-kc002-brn-04-k-footlance-brown-original-imagwkgm6nzgzbbd.webp" alt=""
+                        class="img"></a><br>
+                <span class="cen">Dumbbell <br>
+                    <i class="fa-solid fa-indian-rupee-sign cen"></i><span class="price">3,499</span></span>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="footer">
+                <div class="footer1">
+                    <h3>ABOUT</h3>
+                    <ul class="ul">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Wholesale</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>HELP</h3>
+                    <ul class="ul">
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Cancellation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Report infringment</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>CONSUMER POLICY</h3>
+                    <ul class="ul">
+                        <li><a href="#">Cancellation & Returns</a></li>
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+
+                </div>
+                <div class="footer1">
+                    <h3>SOCIAL</h3>
+                    <ul class="ul">
+                        <li><a href="https://www.google.com/" target="_blank">Google</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                        <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        let btn=document.getElementById("color");
+        btn.addEventListener('click', function fun(){
+            alert("Do you want to log out...?");
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/2e1a702fed.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
